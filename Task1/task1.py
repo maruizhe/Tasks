@@ -9,7 +9,7 @@ img = cv2.imread('./before.png')
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
 lower_red = np.array([0,43,46])
-upper_red = np.array([11,255,255])
+upper_red = np.array([16,255,255])
 
 mask = cv2.inRange(hsv, lower_red, upper_red)
 
@@ -32,5 +32,9 @@ contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_N
 cnt = contours[0]
 
 x, y, w, h = cv2.boundingRect(cnt)
-img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
-cv_show('img', img)
+img1 = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
+# cv_show('after', img1)
+
+text = str(x) + ' ' + str(y)
+cv2.putText(img1, text, (x-35, y-15), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 255), 1)
+cv_show('after', img1)
