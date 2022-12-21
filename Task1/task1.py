@@ -38,3 +38,5 @@ img1 = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
 text = str(x) + ' ' + str(y)
 cv2.putText(img1, text, (x-35, y-15), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 255), 1)
 cv_show('after', img1)
+
+cv2.imwrite('./after.png', img1)
